@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Demo 2 - Visual Game Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #070a12;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 24px 60px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .nav a {
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      color: #facc15;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+      padding: 72px 0;
+    }
+
+    .eyebrow {
+      color: #facc15;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 0;
+      max-width: 760px;
+      font-size: 64px;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: #cbd5e1;
+      font-size: 20px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 12px;
+      background: #facc15;
+      color: #111827;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: #f8fafc;
+      border: 1px solid #334155;
+    }
+
+    .showcase-panel {
+      position: relative;
+      min-height: 440px;
+      border: 1px solid #1e293b;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(250, 204, 21, 0.25), transparent 28%),
+        radial-gradient(circle at 80% 75%, rgba(56, 189, 248, 0.28), transparent 34%),
+        linear-gradient(135deg, #111827, #020617);
+    }
+
+    .fake-screenshot {
+      position: absolute;
+      inset: 34px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,41,59,0.95)),
+        repeating-linear-gradient(45deg, transparent 0 20px, rgba(255,255,255,0.03) 20px 40px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.38);
+    }
+
+    .play-button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 92px;
+      height: 92px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: #facc15;
+      color: #111827;
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .caption {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 24px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(2,6,23,0.72);
+      color: #cbd5e1;
+    }
+
+    section {
+      padding: 60px 0 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: -0.035em;
+    }
+
+    .section-note {
+      max-width: 520px;
+      margin: 0;
+      color: #94a3b8;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project {
+      overflow: hidden;
+      border: 1px solid #1e293b;
+      border-radius: 24px;
+      background: #0f172a;
+    }
+
+    .thumb {
+      min-height: 190px;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(250, 204, 21, 0.34), transparent 28%),
+        radial-gradient(circle at 75% 70%, rgba(56, 189, 248, 0.28), transparent 30%),
+        linear-gradient(135deg, #1e293b, #020617);
+    }
+
+    .project-body {
+      padding: 20px;
+    }
+
+    .project h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .project p {
+      margin: 0 0 16px;
+      color: #cbd5e1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #1e293b;
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .proof {
+      padding: 20px;
+      border: 1px solid #1e293b;
+      border-radius: 20px;
+      background: #0f172a;
+    }
+
+    .proof strong {
+      display: block;
+      color: #facc15;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .proof span {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .contact {
+      padding: 28px;
+      border: 1px solid #1e293b;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0f172a, #111827);
+    }
+
+    .contact p {
+      margin: 0;
+      color: #cbd5e1;
+    }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .project-grid,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-note {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">Alex Ro</div>
+
+      <nav class="nav">
+        <a href="../">All demos</a>
+        <a href="#projects">Projects</a>
+        <a href="#proof">Proof</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Demo 2 - Visual game showcase</div>
+
+          <h1>Show the games first. Explain the engineering second.</h1>
+
+          <p class="lead">
+            This version is designed for a portfolio where visuals, gameplay videos,
+            playable builds, and screenshots should sell the candidate before the reader
+            reaches the technical details.
+          </p>
+
+          <div class="actions">
+            <a class="button" href="#projects">View game projects</a>
+            <a class="button secondary" href="#proof">See technical proof</a>
+          </div>
+        </div>
+
+        <div class="showcase-panel">
+          <div class="fake-screenshot"></div>
+          <div class="play-button">▶</div>
+          <div class="caption">
+            Hero area should ideally contain a real gameplay video or strong screenshot montage.
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-header">
+          <h2>Game Projects</h2>
+          <p class="section-note">
+            Each card should use real media: screenshot, GIF, trailer, playable build,
+            store page, or source sample.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="project-body">
+              <h3>Action Prototype</h3>
+              <p>
+                Present the core gameplay loop, player mechanics, and Alex's exact contribution.
+              </p>
+              <div class="tags">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Gameplay</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="project-body">
+              <h3>Mobile Game</h3>
+              <p>
+                Highlight UI flow, optimization, build delivery, platform constraints, and polish.
+              </p>
+              <div class="tags">
+                <span class="tag">Mobile</span>
+                <span class="tag">UI</span>
+                <span class="tag">Performance</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="thumb"></div>
+            <div class="project-body">
+              <h3>Tools / Systems</h3>
+              <p>
+                Show editor tools, automation, debug panels, level tools, or production workflow support.
+              </p>
+              <div class="tags">
+                <span class="tag">Tools</span>
+                <span class="tag">Editor</span>
+                <span class="tag">Pipeline</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="proof">
+        <div class="section-header">
+          <h2>Technical Proof</h2>
+          <p class="section-note">
+            This section should translate visual work into hiring signals.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof">
+            <strong>01</strong>
+            <span>Playable builds or videos for verification.</span>
+          </div>
+
+          <div class="proof">
+            <strong>02</strong>
+            <span>Clear role and ownership for every project.</span>
+          </div>
+
+          <div class="proof">
+            <strong>03</strong>
+            <span>Technical stack explained without keyword stuffing.</span>
+          </div>
+
+          <div class="proof">
+            <strong>04</strong>
+            <span>Links to GitHub, store pages, itch.io, or YouTube.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p class="section-note">
+            Keep this visible. Do not make recruiters hunt for contact links.
+          </p>
+        </div>
+
+        <div class="contact">
+          <p>
+            Email: example@email.com<br>
+            LinkedIn: linkedin.com/in/example<br>
+            GitHub: github.com/example<br>
+            Main demo list: ../
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Demo 2 - visual showcase layout. Replace placeholders with real project media.
+    </footer>
+  </div>
+</body>
+</html>
