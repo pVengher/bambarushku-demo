@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Demo 3 - Compact CV Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .topbar a {
+      color: #374151;
+      font-weight: 700;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+    }
+
+    .sidebar,
+    .content {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+    }
+
+    .sidebar {
+      padding: 28px;
+      align-self: start;
+      position: sticky;
+      top: 24px;
+    }
+
+    .avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .role {
+      margin: 10px 0 20px;
+      color: #4b5563;
+      font-weight: 700;
+    }
+
+    .summary {
+      margin: 0;
+      color: #4b5563;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 30px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .muted {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .item {
+      padding: 18px 0;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .item:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .item p {
+      margin: 8px 0 0;
+      color: #374151;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skills li {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .note {
+      margin: 0;
+      padding: 16px;
+      border-radius: 16px;
+      background: #eff6ff;
+      color: #1e3a8a;
+      border: 1px solid #bfdbfe;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="../">← All demos</a>
+      <span>Demo 3 - Compact CV / profile layout</span>
+    </div>
+
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="avatar"></div>
+
+        <h1>Alex Ro</h1>
+        <div class="role">Unity Developer / Game Developer</div>
+
+        <p class="summary">
+          Compact portfolio structure for recruiters and technical leads who want
+          to understand the candidate quickly: profile, strongest projects,
+          skills, and proof links.
+        </p>
+
+        <div class="contact-list">
+          <div>Email: example@email.com</div>
+          <div>LinkedIn: linkedin.com/in/example</div>
+          <div>GitHub: github.com/example</div>
+          <div>Location: available remotely</div>
+        </div>
+      </aside>
+
+      <section class="content">
+        <div class="section">
+          <h2>Profile</h2>
+          <p class="note">
+            This version is best when the portfolio should feel closer to a CV:
+            clean, fast to scan, and focused on hiring signals rather than visual effects.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Selected Projects</h2>
+
+          <article class="item">
+            <h3>Project One - Gameplay Prototype</h3>
+            <div class="muted">Unity / C# / Gameplay Systems</div>
+            <p>
+              Describe the project in 2-3 sentences. Focus on what Alex personally built:
+              mechanics, controls, combat logic, UI, level flow, tools, or optimization.
+            </p>
+            <div class="tags">
+              <span class="tag">Gameplay</span>
+              <span class="tag">Prototype</span>
+              <span class="tag">Video link needed</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <h3>Project Two - Mobile / Casual Game</h3>
+            <div class="muted">Unity / Mobile / Performance</div>
+            <p>
+              Mention platform, contribution, constraints, and result. Add links to
+              a build, gameplay recording, screenshots, or store page.
+            </p>
+            <div class="tags">
+              <span class="tag">Mobile</span>
+              <span class="tag">UI</span>
+              <span class="tag">Optimization</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <h3>Project Three - Tools or Systems Work</h3>
+            <div class="muted">Editor Tools / Pipeline / Debugging</div>
+            <p>
+              Use this slot to show engineering maturity: custom tools, automation,
+              debug panels, build workflow, profiling, or internal systems.
+            </p>
+            <div class="tags">
+              <span class="tag">Tools</span>
+              <span class="tag">Editor</span>
+              <span class="tag">Workflow</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="section">
+          <h2>Technical Skills</h2>
+
+          <ul class="skills">
+            <li>Unity gameplay programming</li>
+            <li>C# scripting and architecture</li>
+            <li>Player controls and interaction systems</li>
+            <li>UI implementation and menu flow</li>
+            <li>Debugging and profiling</li>
+            <li>Git-based collaboration</li>
+            <li>Asset integration</li>
+            <li>Build preparation and testing</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>What to Improve in the Original Portfolio</h2>
+
+          <article class="item">
+            <h3>Lead with the strongest evidence</h3>
+            <p>
+              Put the best playable/video projects first. A recruiter should understand
+              the candidate's level within the first 20-30 seconds.
+            </p>
+          </article>
+
+          <article class="item">
+            <h3>Explain personal contribution</h3>
+            <p>
+              Every project should say exactly what Alex did, not only what the project is.
+            </p>
+          </article>
+
+          <article class="item">
+            <h3>Separate visuals from technical proof</h3>
+            <p>
+              Screenshots attract attention, but technical sections should prove engineering value.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
